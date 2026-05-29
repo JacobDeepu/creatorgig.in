@@ -7,6 +7,10 @@
       <stop offset="1" stop-color="#FF6B1A"/>
     </linearGradient>
   </defs>
-  <rect width="64" height="64" rx="16" fill="#0A0A0F"/>
-  <text x="32" y="46" font-family="Syne, system-ui, sans-serif" font-size="42" font-weight="800" text-anchor="middle" fill="url(#g)">g</text>
+  <rect width="64" height="64" rx="16" fill="url(#g)"/>
+  <!-- Font-independent lowercase "g": bowl + descender, drawn as strokes -->
+  <g fill="none" stroke="#fff" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="27" cy="27" r="10.5"/>
+    <path d="M37.5 17.5 V39 q0 10 -9.5 10 q-7.5 0 -9.2 -5.6"/>
+  </g>
 </svg>
