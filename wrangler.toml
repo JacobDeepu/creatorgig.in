@@ -1,6 +1,9 @@
-# Cloudflare Pages — static site deployment
-# Build command:        npm run build
-# Build output dir:      dist
+# Cloudflare Workers — static-assets deployment
+# Build command:   npm run build
+# Deploy command:  npx wrangler deploy
 name = "creatorgig"
 compatibility_date = "2026-05-29"
-pages_build_output_dir = "dist"
+
+# Serve the static build output as Worker assets (no server-side code).
+[assets]
+directory = "./dist"
