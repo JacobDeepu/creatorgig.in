@@ -1,0 +1,211 @@
+---
+import Toggle from './Toggle.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { APP } from '../consts';
+---
+
+<section class="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+  <div class="mesh" aria-hidden="true"></div>
+
+  <div class="container-x relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
+    <!-- LEFT: copy -->
+    <div>
+      <span
+        class="inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-3 py-1 text-xs font-medium text-muted"
+        data-reveal
+      >
+        <span class="size-1.5 rounded-full bg-grad-main"></span>
+        India’s creator marketplace
+      </span>
+
+      <div class="mt-6" data-reveal>
+        <Toggle />
+      </div>
+
+      <!-- Headline panels (crossfade on toggle) -->
+      <div class="stack mt-6">
+        <div data-panel data-mode="creator" id="panel-creator" class="is-active" role="tabpanel" aria-labelledby="tab-creator">
+          <h1 data-kinetic class="kinetic text-[clamp(2.6rem,7vw,4.75rem)]">
+            <span class="kw"><span class="kwi">Real</span></span>
+            <span class="kw"><span class="kwi">numbers.</span></span>
+            <span class="kw"><span class="kwi">Real</span></span>
+            <span class="kw"><span class="kwi">deals.</span></span>
+            <span class="kw"><span class="kwi text-gradient">Real</span></span>
+            <span class="kw"><span class="kwi text-gradient">income.</span></span>
+          </h1>
+          <p class="mt-5 max-w-md text-lg text-muted">
+            Connect your socials for live, verified analytics — then let brands come to you.
+            No screenshots. No fakes.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <Button href={APP.signup} variant="primary" size="lg" data-magnetic>
+              Start earning
+              <Icon name="arrow-right" size={18} />
+            </Button>
+            <Button href="#how" variant="secondary" size="lg">See how it works</Button>
+          </div>
+        </div>
+
+        <div data-panel data-mode="business" id="panel-business" role="tabpanel" aria-labelledby="tab-business">
+          <h1 data-kinetic class="kinetic text-[clamp(2.6rem,7vw,4.75rem)]">
+            <span class="kw"><span class="kwi">Find</span></span>
+            <span class="kw"><span class="kwi">creators</span></span>
+            <span class="kw"><span class="kwi">who</span></span>
+            <span class="kw"><span class="kwi text-gradient">move</span></span>
+            <span class="kw"><span class="kwi text-gradient">the</span></span>
+            <span class="kw"><span class="kwi text-gradient">numbers.</span></span>
+          </h1>
+          <p class="mt-5 max-w-md text-lg text-muted">
+            Post a brief, discover verified creators with analytics you can actually trust,
+            and close deals securely.
+          </p>
+          <div class="mt-7 flex flex-wrap gap-3">
+            <Button href={APP.postBrief} variant="primary" size="lg" data-magnetic>
+              Post a brief
+              <Icon name="arrow-right" size={18} />
+            </Button>
+            <Button href="#for-business" variant="secondary" size="lg">Browse creators</Button>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-7 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-muted" data-reveal>
+        <span class="inline-flex items-center gap-1.5"><Icon name="check" size={15} class="text-hotpink" /> Free to join</span>
+        <span class="inline-flex items-center gap-1.5"><Icon name="check" size={15} class="text-hotpink" /> 50 AI credits</span>
+        <span class="inline-flex items-center gap-1.5"><Icon name="check" size={15} class="text-hotpink" /> Encrypted chat</span>
+      </p>
+    </div>
+
+    <!-- RIGHT: card mockups (crossfade on toggle) -->
+    <div class="stack relative h-[380px] sm:h-[420px]" data-reveal aria-hidden="true">
+      <!-- Creator cards -->
+      <div data-panel data-mode="creator" class="is-active relative">
+        <!-- gig card (behind) -->
+        <div class="mock-card absolute right-2 top-4 w-56 rotate-6 sm:right-6">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-muted">Gig</span>
+            <span class="rounded-full bg-grad-warm px-2 py-0.5 text-[10px] font-bold text-white">popular</span>
+          </div>
+          <p class="mt-2 font-display text-lg font-bold">Reel + Story</p>
+          <p class="mt-1 text-2xl font-bold text-gradient-warm">₹12,000</p>
+          <p class="mt-2 inline-flex items-center gap-1 text-xs text-muted">
+            <Icon name="check" size={13} class="text-electric" /> 2-day delivery
+          </p>
+        </div>
+        <!-- analytics card (front) -->
+        <div class="mock-card grad-border absolute left-0 bottom-0 w-72">
+          <div class="flex items-center gap-3">
+            <span class="grid size-10 place-items-center rounded-full bg-grad-main font-display font-bold text-white">a</span>
+            <div class="leading-tight">
+              <p class="flex items-center gap-1 font-semibold">@aria <Icon name="badge-check" size={15} class="text-hotpink" /></p>
+              <p class="text-xs text-muted">248K followers · Instagram</p>
+            </div>
+          </div>
+          <p class="mt-4 text-xs uppercase tracking-wide text-muted">Earned this month</p>
+          <p class="font-display text-3xl font-extrabold">₹1,84,200</p>
+          <svg class="mt-3 h-12 w-full" viewBox="0 0 240 48" fill="none" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="spark" x1="0" y1="0" x2="240" y2="0" gradientUnits="userSpaceOnUse">
+                <stop offset="0" stop-color="#7C3AED" /><stop offset="0.5" stop-color="#F0167A" /><stop offset="1" stop-color="#FF6B1A" />
+              </linearGradient>
+            </defs>
+            <polyline points="0,40 30,34 60,36 90,24 120,28 150,16 180,18 210,8 240,4" stroke="url(#spark)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <div class="mt-3 flex gap-2 text-[11px]">
+            <span class="rounded-full border border-border px-2 py-0.5 text-muted">8.2% engagement</span>
+            <span class="inline-flex items-center gap-1 rounded-full border border-border px-2 py-0.5 text-muted"><Icon name="badge-check" size={12} class="text-hotpink" /> verified</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Business cards -->
+      <div data-panel data-mode="business" class="relative">
+        <!-- discovery card (behind) -->
+        <div class="mock-card absolute right-2 top-4 w-60 rotate-6 sm:right-4">
+          <p class="text-xs font-medium text-muted">Top match</p>
+          <div class="mt-2 flex items-center gap-3">
+            <span class="grid size-9 place-items-center rounded-full bg-grad-cool font-display font-bold text-white">m</span>
+            <div class="leading-tight">
+              <p class="flex items-center gap-1 text-sm font-semibold">@maya <Icon name="badge-check" size={14} class="text-hotpink" /></p>
+              <p class="text-xs text-muted">120K · 4.9★</p>
+            </div>
+          </div>
+          <p class="mt-3 text-xs text-muted">Verified reach</p>
+          <p class="font-display text-xl font-bold text-gradient">89,400</p>
+        </div>
+        <!-- brief card (front) -->
+        <div class="mock-card grad-border absolute left-0 bottom-0 w-72">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 text-sm font-semibold"><Icon name="file-text" size={16} class="text-fuchsia" /> New brief</span>
+            <span class="rounded-full bg-grad-main px-2 py-0.5 text-[10px] font-bold text-white">live</span>
+          </div>
+          <p class="mt-3 font-display text-lg font-bold leading-tight">Summer skincare launch</p>
+          <div class="mt-4 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-lg border border-border py-2"><p class="font-bold">₹40k</p><p class="text-[10px] text-muted">budget</p></div>
+            <div class="rounded-lg border border-border py-2"><p class="font-bold">5</p><p class="text-[10px] text-muted">days</p></div>
+            <div class="rounded-lg border border-border py-2"><p class="font-bold">3</p><p class="text-[10px] text-muted">creators</p></div>
+          </div>
+          <div class="mt-4 flex -space-x-2">
+            <span class="size-7 rounded-full bg-grad-cool ring-2 ring-card"></span>
+            <span class="size-7 rounded-full bg-grad-warm ring-2 ring-card"></span>
+            <span class="size-7 rounded-full bg-grad-main ring-2 ring-card"></span>
+            <span class="grid size-7 place-items-center rounded-full border border-border bg-surface text-[10px] text-muted ring-2 ring-card">+9</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .stack { display: grid; }
+  .stack > [data-panel] { grid-area: 1 / 1; }
+
+  [data-panel] {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: opacity 0.45s ease, transform 0.45s ease;
+    pointer-events: none;
+  }
+  [data-panel].is-active {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+  }
+
+  /* Kinetic headline words */
+  .kw { display: inline-block; overflow: hidden; vertical-align: top; line-height: 0.95; }
+  .kwi { display: inline-block; }
+  html.js .kwi { transform: translateY(110%); }
+
+  .mock-card {
+    border-radius: 1.25rem;
+    border: 1px solid var(--color-border);
+    background: var(--color-card);
+    padding: 1.1rem 1.2rem;
+    box-shadow: 0 24px 60px -24px rgba(0, 0, 0, 0.7);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.js .kwi { transform: none; }
+    [data-panel] { transition: none; }
+  }
+</style>
+
+<script>
+  // Audience toggle — swap all panels (left copy + right cards) together.
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.audience-toggle [data-mode]');
+  const panels = document.querySelectorAll<HTMLElement>('[data-panel][data-mode]');
+
+  const setMode = (mode: string) => {
+    tabs.forEach((t) => t.setAttribute('aria-selected', String(t.dataset.mode === mode)));
+    panels.forEach((p) => p.classList.toggle('is-active', p.dataset.mode === mode));
+  };
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => setMode(tab.dataset.mode || 'creator'));
+  });
+</script>
