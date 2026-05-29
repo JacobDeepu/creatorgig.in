@@ -7,6 +7,11 @@ import '@fontsource/dm-sans/600.css';
 import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 
+// Preload the above-the-fold fonts (headline + body) to minimise font-swap
+// reflow / CLS. Vite returns the fingerprinted URLs.
+import syne800 from '@fontsource/syne/files/syne-latin-800-normal.woff2?url';
+import dmsans400 from '@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2?url';
+
 interface Props {
   title?: string;
   description?: string;
@@ -24,6 +29,8 @@ const { title, description, path } = Astro.props;
     <meta name="theme-color" content="#0a0a0f" />
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href={syne800} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={dmsans400} as="font" type="font/woff2" crossorigin />
 
     <!-- No-FOUC theme: default dark, opt into light before paint -->
     <script is:inline>

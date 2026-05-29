@@ -161,11 +161,17 @@
  * ------------------------------------------------------------------ */
 .mesh {
   position: absolute;
-  inset: -20%;
+  /* Viewport-based sizing so the blob never resizes when content reflows
+     (e.g. on font swap) — keeps it out of the CLS calculation. */
+  top: -15vh;
+  left: -20%;
+  right: -20%;
+  height: 130vh;
   z-index: 0;
   pointer-events: none;
   filter: blur(80px) saturate(140%);
   opacity: 0.55;
+  contain: layout paint size;
 }
 .mesh::before,
 .mesh::after {
