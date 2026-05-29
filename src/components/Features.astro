@@ -15,25 +15,22 @@ import Icon from './Icon.astro';
     </div>
 
     <div
-      class="mt-12 grid auto-rows-[minmax(170px,1fr)] grid-cols-2 gap-4 lg:grid-cols-4"
+      class="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
       data-stagger
     >
-      <!-- 1 — Profile (big) -->
-      <article
-        class="bento group col-span-2 row-span-1 lg:col-span-2 lg:row-span-2"
-        data-stagger-item
-      >
+      <!-- 1 — Profile (wide) -->
+      <article class="bento group sm:col-span-2 lg:col-span-2" data-stagger-item>
         <div class="bento-head">
           <span class="bento-ico"><Icon name="user-round" size={18} /></span>
           <h3>One profile. Every platform.</h3>
         </div>
         <p class="bento-desc">All your socials, followers, and best work in one verified profile.</p>
-        <div class="mt-auto space-y-2 pt-5">
+        <div class="mt-5 space-y-2.5">
           {
             [
               ['Instagram', '248K', 'w-[82%]'],
               ['YouTube', '92K', 'w-[48%]'],
-              ['Snapchat', '40K', 'w-[28%]'],
+              ['Facebook', '40K', 'w-[28%]'],
             ].map(([net, n, w]) => (
               <div class="flex items-center gap-3">
                 <span class="w-20 shrink-0 text-xs text-muted">{net}</span>
@@ -45,19 +42,19 @@ import Icon from './Icon.astro';
             ))
           }
           <p class="inline-flex items-center gap-1.5 pt-1 text-xs text-muted">
-            <Icon name="badge-check" size={14} class="text-hotpink" /> Verified across 6 platforms
+            <Icon name="badge-check" size={14} class="text-hotpink" /> Verified across every platform
           </p>
         </div>
       </article>
 
       <!-- 2 — Gigs (wide) -->
-      <article class="bento group col-span-2 lg:col-span-2" data-stagger-item>
+      <article class="bento group sm:col-span-2 lg:col-span-2" data-stagger-item>
         <div class="bento-head">
           <span class="bento-ico"><Icon name="tag" size={18} /></span>
           <h3>List your gigs. Name your price.</h3>
         </div>
         <p class="bento-desc">Package reels, posts, stories and UGC. You set the rate.</p>
-        <div class="mt-auto flex flex-wrap gap-2 pt-5">
+        <div class="mt-5 flex flex-wrap gap-2">
           <span class="gig-pill">Reel + Story <b class="text-gradient-warm">₹12,000</b></span>
           <span class="gig-pill">3 Posts <b class="text-gradient-warm">₹8,500</b></span>
           <span class="gig-pill">UGC video <b class="text-gradient-warm">₹6,000</b></span>
@@ -71,7 +68,7 @@ import Icon from './Icon.astro';
           <h3 class="text-base">Real analytics.</h3>
         </div>
         <p class="bento-desc">No screenshots. Live and verified.</p>
-        <div class="mt-auto pt-3">
+        <div class="mt-5">
           <svg class="h-10 w-full" viewBox="0 0 160 40" fill="none" preserveAspectRatio="none">
             <polyline points="0,32 26,28 52,30 78,18 104,22 130,10 160,6" stroke="url(#spark2)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
             <defs>
@@ -91,7 +88,7 @@ import Icon from './Icon.astro';
           <h3 class="text-base">Apply in one tap.</h3>
         </div>
         <p class="bento-desc">Brands post. You pitch. No cold DMs.</p>
-        <div class="mt-auto flex items-center justify-between rounded-xl border border-border bg-surface p-3">
+        <div class="mt-5 flex items-center justify-between rounded-xl border border-border bg-surface p-3">
           <div class="leading-tight">
             <p class="text-sm font-semibold">Skincare brief</p>
             <p class="text-xs text-muted">₹40k · 5 days</p>
@@ -101,27 +98,29 @@ import Icon from './Icon.astro';
       </article>
 
       <!-- 5 — Auto-DM (wide) -->
-      <article class="bento group col-span-2 lg:col-span-2" data-stagger-item>
+      <article class="bento group sm:col-span-2 lg:col-span-2" data-stagger-item>
         <div class="bento-head">
           <span class="bento-ico"><Icon name="zap" size={18} /></span>
           <h3>Auto-DM that never sleeps.</h3>
           <span class="ml-auto rounded-full border border-border px-2 py-0.5 text-[10px] font-bold text-muted">24/7</span>
         </div>
         <p class="bento-desc">Instagram automations that reply, drop links, and catch leads while you sleep.</p>
-        <div class="mt-auto space-y-2 pt-5">
+        <div class="mt-5 space-y-2">
           <span class="dm-bubble dm-in">“link pls?”</span>
           <span class="dm-bubble dm-out">Here you go 🔗 grab 10% off ✨</span>
         </div>
       </article>
 
-      <!-- 6 — Encrypted chat (wide) -->
-      <article class="bento group col-span-2 lg:col-span-2" data-stagger-item>
-        <div class="bento-head">
-          <span class="bento-ico"><Icon name="lock" size={18} /></span>
-          <h3>Chats that stay yours.</h3>
+      <!-- 6 — Encrypted chat (full-width closer) -->
+      <article class="bento group sm:col-span-2 lg:col-span-4 lg:!flex-row lg:items-center lg:gap-10" data-stagger-item>
+        <div class="lg:max-w-sm">
+          <div class="bento-head">
+            <span class="bento-ico"><Icon name="lock" size={18} /></span>
+            <h3>Chats that stay yours.</h3>
+          </div>
+          <p class="bento-desc">End-to-end encrypted messaging. Negotiate the deal in private.</p>
         </div>
-        <p class="bento-desc">End-to-end encrypted messaging. Negotiate in private.</p>
-        <div class="mt-auto space-y-2 pt-5">
+        <div class="mt-5 space-y-2 lg:mt-0 lg:flex-1">
           <span class="dm-bubble dm-in">Can you do ₹15k for the bundle?</span>
           <span class="dm-bubble dm-out">Deal. Sending the contract now.</span>
           <p class="inline-flex items-center gap-1.5 text-xs text-muted">
