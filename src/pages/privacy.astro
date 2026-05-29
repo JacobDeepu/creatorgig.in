@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const updated = 'May 2026';
+const sections = [
+  { h: 'What we collect', p: 'Account details you provide (name, email, social handles) and the analytics you choose to connect from your linked platforms. We only request what’s needed to run your profile and gigs.' },
+  { h: 'How we use it', p: 'To verify creators, surface relevant briefs and creators, power your analytics, and keep payments and chat secure. We don’t sell your personal data.' },
+  { h: 'Connected analytics', p: 'When you connect a social platform, we read the metrics that platform shares with us. You can disconnect any platform at any time from your settings.' },
+  { h: 'Your choices', p: 'You can access, export or delete your data, and disconnect platforms whenever you like. Reach us at hello@creatorgig.in for any request.' },
+];
+---
+
+<Base title="Privacy Policy — creatorgig" description="How creatorgig handles your data." path="/privacy">
+  <Navbar />
+  <main id="main" class="container-x section max-w-3xl pt-32">
+    <h1 class="text-[clamp(2.2rem,6vw,3.5rem)]">Privacy <span class="text-gradient">Policy</span></h1>
+    <p class="mt-3 text-sm text-muted">Last updated {updated}. We’re early-stage — this will grow as we do.</p>
+    <div class="mt-10 space-y-8">
+      {
+        sections.map((s) => (
+          <section>
+            <h2 class="font-display text-xl font-bold tracking-tight">{s.h}</h2>
+            <p class="mt-2 text-muted">{s.p}</p>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+  <Footer />
+</Base>

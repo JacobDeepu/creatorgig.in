@@ -1,0 +1,32 @@
+---
+import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+
+const updated = 'May 2026';
+const sections = [
+  { h: 'Using creatorgig', p: 'creatorgig connects creators and businesses. You’re responsible for the accuracy of your profile, gigs and briefs, and for following the rules of the platforms you connect.' },
+  { h: 'Payments', p: 'Agreed payments are held securely and released when the work is delivered as described. Fees, if any, are shown before you confirm a deal.' },
+  { h: 'Content & conduct', p: 'Keep it honest and lawful — no fake analytics, spam, or harassment. We may suspend accounts that break these terms.' },
+  { h: 'Changes', p: 'We’ll update these terms as the product evolves and will flag material changes. Questions? Email hello@creatorgig.in.' },
+];
+---
+
+<Base title="Terms of Service — creatorgig" description="The terms for using creatorgig." path="/terms">
+  <Navbar />
+  <main id="main" class="container-x section max-w-3xl pt-32">
+    <h1 class="text-[clamp(2.2rem,6vw,3.5rem)]">Terms of <span class="text-gradient">Service</span></h1>
+    <p class="mt-3 text-sm text-muted">Last updated {updated}. We’re early-stage — this will grow as we do.</p>
+    <div class="mt-10 space-y-8">
+      {
+        sections.map((s) => (
+          <section>
+            <h2 class="font-display text-xl font-bold tracking-tight">{s.h}</h2>
+            <p class="mt-2 text-muted">{s.p}</p>
+          </section>
+        ))
+      }
+    </div>
+  </main>
+  <Footer />
+</Base>
