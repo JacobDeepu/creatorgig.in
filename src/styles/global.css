@@ -103,40 +103,43 @@
 /* ------------------------------------------------------------------ *
  * Reusable helpers
  * ------------------------------------------------------------------ */
-@layer utilities {
-  /* Gradient text — clip the main gradient onto glyphs */
-  .text-gradient {
-    background: var(--grad-main);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-  }
-  .text-gradient-warm {
-    background: var(--grad-warm);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    -webkit-text-fill-color: transparent;
-  }
+/* Defined with @utility (not @layer) so Tailwind v4 generates variants
+   (hover:, aria-selected:, etc.) for these custom utilities. */
 
-  /* Gradient surfaces */
-  .bg-grad-main { background-image: var(--grad-main); }
-  .bg-grad-warm { background-image: var(--grad-warm); }
-  .bg-grad-cool { background-image: var(--grad-cool); }
+/* Gradient text — clip the main gradient onto glyphs */
+@utility text-gradient {
+  background: var(--grad-main);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+@utility text-gradient-warm {
+  background: var(--grad-warm);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
 
-  /* Gradient hairline / divider */
-  .grad-line {
-    height: 2px;
-    background: var(--grad-main);
-    border: 0;
-  }
+/* Gradient surfaces */
+@utility bg-grad-main { background-image: var(--grad-main); }
+@utility bg-grad-warm { background-image: var(--grad-warm); }
+@utility bg-grad-cool { background-image: var(--grad-cool); }
 
-  /* Gradient border via mask (no gradient text + border clash) */
-  .grad-border {
-    position: relative;
-  }
-  .grad-border::before {
+@utility glow-pink { box-shadow: var(--glow-pink); }
+
+/* Gradient hairline / divider */
+@utility grad-line {
+  height: 2px;
+  background: var(--grad-main);
+  border: 0;
+}
+
+/* Gradient border via mask (no gradient text + border clash) */
+@utility grad-border {
+  position: relative;
+  &::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -148,12 +151,15 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+}
 
-  .glow-pink { box-shadow: var(--glow-pink); }
-
-  /* Section rhythm */
-  .section { padding-block: clamp(4.5rem, 10vw, 9rem); }
-  .container-x { width: 100%; max-width: 80rem; margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 3rem); }
+/* Section rhythm */
+@utility section { padding-block: clamp(4.5rem, 10vw, 9rem); }
+@utility container-x {
+  width: 100%;
+  max-width: 80rem;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
 }
 
 /* ------------------------------------------------------------------ *
