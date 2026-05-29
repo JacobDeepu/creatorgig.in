@@ -45,24 +45,8 @@ const io = new IntersectionObserver(
 );
 document.querySelectorAll('[data-reveal]').forEach((el) => io.observe(el));
 
-/* ---------------------------------------------------------------- *
- * Kinetic headlines — words rise into place on scroll
- * ---------------------------------------------------------------- */
-document.querySelectorAll<HTMLElement>('[data-kinetic]').forEach((heading) => {
-  const words = heading.querySelectorAll('.kwi');
-  if (!words.length) return;
-  if (reduceMotion) {
-    gsap.set(words, { y: 0 });
-    return;
-  }
-  gsap.to(words, {
-    y: 0,
-    duration: 0.85,
-    ease: 'power3.out',
-    stagger: 0.07,
-    scrollTrigger: { trigger: heading, start: 'top 88%' },
-  });
-});
+/* Kinetic headlines ([data-kinetic]) are CSS-only (see global.css) for fast
+ * LCP — no JS dependency to reveal the hero headline. */
 
 /* ---------------------------------------------------------------- *
  * Staggered group reveals — [data-stagger] children

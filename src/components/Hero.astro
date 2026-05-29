@@ -5,7 +5,7 @@ import Icon from './Icon.astro';
 import { APP } from '../consts';
 ---
 
-<section class="relative overflow-hidden pt-28 pb-16 md:pt-36 md:pb-24">
+<section class="relative overflow-hidden pt-24 pb-12 md:pt-28 md:pb-20">
   <div class="mesh" aria-hidden="true"></div>
 
   <div class="container-x relative grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8">
@@ -26,7 +26,7 @@ import { APP } from '../consts';
       <!-- Headline panels (crossfade on toggle) -->
       <div class="stack mt-6">
         <div data-panel data-mode="creator" id="panel-creator" class="is-active" role="tabpanel" aria-labelledby="tab-creator">
-          <h1 data-kinetic class="kinetic text-[clamp(2.6rem,7vw,4.75rem)]">
+          <h1 data-kinetic class="kinetic text-[clamp(2.4rem,6vw,4.25rem)]">
             <span class="kw"><span class="kwi">Real</span></span>
             <span class="kw"><span class="kwi">numbers.</span></span>
             <span class="kw"><span class="kwi">Real</span></span>
@@ -48,7 +48,7 @@ import { APP } from '../consts';
         </div>
 
         <div data-panel data-mode="business" id="panel-business" role="tabpanel" aria-labelledby="tab-business">
-          <h1 data-kinetic class="kinetic text-[clamp(2.6rem,7vw,4.75rem)]">
+          <h1 data-kinetic class="kinetic text-[clamp(2.4rem,6vw,4.25rem)]">
             <span class="kw"><span class="kwi">Find</span></span>
             <span class="kw"><span class="kwi">creators</span></span>
             <span class="kw"><span class="kwi">who</span></span>
@@ -175,11 +175,6 @@ import { APP } from '../consts';
     transform: none;
     pointer-events: auto;
   }
-
-  /* Kinetic headline words */
-  .kw { display: inline-block; overflow: hidden; vertical-align: top; line-height: 0.95; }
-  .kwi { display: inline-block; }
-  html.js .kwi { transform: translateY(110%); }
 
   .mock-card {
     border-radius: 1.25rem;

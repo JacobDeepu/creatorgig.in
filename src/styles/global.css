@@ -198,6 +198,25 @@
   100% { transform: translate3d(-10%, -12%, 0) scale(0.95); }
 }
 
+/* Kinetic headlines — words rise into place on load (CSS-only, great for LCP).
+   Markup: <h* data-kinetic><span class="kw"><span class="kwi">word</span></span> … */
+.kw { display: inline-block; overflow: hidden; vertical-align: top; line-height: 0.95; }
+.kwi { display: inline-block; }
+html.js .kwi {
+  transform: translateY(110%);
+  animation: kw-rise 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.kw:nth-child(1) .kwi { animation-delay: 0.02s; }
+.kw:nth-child(2) .kwi { animation-delay: 0.09s; }
+.kw:nth-child(3) .kwi { animation-delay: 0.16s; }
+.kw:nth-child(4) .kwi { animation-delay: 0.23s; }
+.kw:nth-child(5) .kwi { animation-delay: 0.30s; }
+.kw:nth-child(6) .kwi { animation-delay: 0.37s; }
+.kw:nth-child(7) .kwi { animation-delay: 0.44s; }
+.kw:nth-child(8) .kwi { animation-delay: 0.51s; }
+.kw:nth-child(9) .kwi { animation-delay: 0.58s; }
+@keyframes kw-rise { to { transform: translateY(0); } }
+
 /* Marquee (trust strip / platform row on mobile) */
 .marquee-track {
   display: flex;
@@ -209,14 +228,15 @@
   to { transform: translateX(-50%); }
 }
 
-/* Reveal primitives — JS adds .is-in when in view */
-[data-reveal] {
+/* Reveal primitives — JS adds .is-in when in view.
+   Gated behind html.js so content is never hidden without JS (LCP + a11y). */
+html.js [data-reveal] {
   opacity: 0;
   transform: translateY(24px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
 }
-[data-reveal].is-in {
+html.js [data-reveal].is-in {
   opacity: 1;
   transform: none;
 }
@@ -236,5 +256,6 @@
   .mesh::before,
   .mesh::after { animation: none; }
   .marquee-track { animation: none; }
-  [data-reveal] { opacity: 1; transform: none; }
+  html.js [data-reveal] { opacity: 1; transform: none; }
+  html.js .kwi { transform: none; animation: none; }
 }
