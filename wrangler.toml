@@ -1,0 +1,6 @@
+# Cloudflare Pages — static site deployment
+# Build command:        npm run build
+# Build output dir:      dist
+name = "creatorgig"
+compatibility_date = "2026-05-29"
+pages_build_output_dir = "dist"

@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://creatorgig.in/sitemap-index.xml
