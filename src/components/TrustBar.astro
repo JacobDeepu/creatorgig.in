@@ -14,29 +14,15 @@ const signals = [
   <div class="container-x">
     <p class="text-center text-sm font-medium text-muted">Built to work where you already do.</p>
 
-    <!-- Platform marquee -->
-    <div class="relative mt-6 overflow-hidden">
-      <div class="marquee-track">
-        {
-          PLATFORMS.map((p) => (
-            <span class="platform whitespace-nowrap font-display text-xl font-bold text-muted transition-colors hover:text-ghost">
-              {p}
-            </span>
-          ))
-        }
-        {
-          PLATFORMS.map((p) => (
-            <span
-              aria-hidden="true"
-              class="platform whitespace-nowrap font-display text-xl font-bold text-muted"
-            >
-              {p}
-            </span>
-          ))
-        }
-      </div>
-      <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-void to-transparent"></div>
-      <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-void to-transparent"></div>
+    <!-- Platform row -->
+    <div class="mt-6 flex flex-wrap items-center justify-center gap-x-10 gap-y-3" data-reveal>
+      {
+        PLATFORMS.map((p) => (
+          <span class="whitespace-nowrap font-display text-xl font-bold text-muted transition-colors hover:text-ghost">
+            {p}
+          </span>
+        ))
+      }
     </div>
 
     <!-- Honesty strip — real signals, not inflated stats -->

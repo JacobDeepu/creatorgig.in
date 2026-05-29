@@ -26,11 +26,4 @@ export const NAV_LINKS = [
   { label: 'For business', href: '#for-business' },
 ] as const;
 
-export const PLATFORMS = [
-  'Instagram',
-  'YouTube',
-  'Facebook',
-  'X',
-  'LinkedIn',
-  'Snapchat',
-] as const;
+export const PLATFORMS = ['Instagram', 'YouTube', 'Facebook'] as const;
