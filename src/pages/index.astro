@@ -1,17 +1,22 @@
 ---
 import Base from '../layouts/Base.astro';
+import Navbar from '../components/Navbar.astro';
 import Wordmark from '../components/Wordmark.astro';
 import Button from '../components/Button.astro';
 import { APP } from '../consts';
 ---
 
 <Base>
-  <main id="main" class="container-x section">
-    <Wordmark class="text-5xl" />
-    <h1 class="mt-8 text-6xl">Real numbers. <span class="text-gradient">Real income.</span></h1>
-    <div class="mt-8 flex gap-4">
-      <Button href={APP.signup} variant="primary" size="lg">Start earning</Button>
-      <Button href="#how" variant="secondary" size="lg">See how it works</Button>
-    </div>
+  <Navbar />
+  <main id="main">
+    <section class="container-x section pt-32">
+      <Wordmark class="text-5xl" />
+      <h1 class="mt-8 text-6xl">Real numbers. <span class="text-gradient">Real income.</span></h1>
+      <div class="mt-8 flex gap-4">
+        <Button href={APP.signup} variant="primary" size="lg">Start earning</Button>
+        <Button href="#how" variant="secondary" size="lg">See how it works</Button>
+      </div>
+      <div class="h-[120vh]"></div>
+    </section>
   </main>
 </Base>

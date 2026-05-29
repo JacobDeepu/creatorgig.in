@@ -1,0 +1,161 @@
+---
+import Wordmark from './Wordmark.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { NAV_LINKS, APP } from '../consts';
+---
+
+<header
+  id="site-nav"
+  data-scrolled="false"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-300 data-[scrolled=true]:bg-void/70 data-[scrolled=true]:backdrop-blur-xl data-[scrolled=true]:border-b data-[scrolled=true]:border-border"
+>
+  <nav class="container-x flex h-16 items-center justify-between md:h-20" aria-label="Primary">
+    <a href="/" aria-label="creatorgig — home" class="shrink-0">
+      <Wordmark class="text-2xl" />
+    </a>
+
+    <ul class="hidden items-center gap-8 md:flex">
+      {
+        NAV_LINKS.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="group relative text-sm font-medium text-muted transition-colors hover:text-ghost"
+            >
+              {link.label}
+              <span class="absolute -bottom-1 left-0 h-px w-0 bg-grad-main transition-all duration-300 group-hover:w-full" />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <div class="flex items-center gap-1.5 sm:gap-3">
+      <button
+        id="theme-toggle"
+        type="button"
+        aria-label="Toggle colour theme"
+        class="grid size-9 place-items-center rounded-full text-muted transition-colors hover:bg-card hover:text-ghost"
+      >
+        <Icon name="moon" size={18} class="theme-icon-dark" />
+        <Icon name="sun" size={18} class="theme-icon-light hidden" />
+      </button>
+
+      <a
+        href={APP.login}
+        class="hidden text-sm font-medium text-muted transition-colors hover:text-ghost sm:block"
+      >
+        Log in
+      </a>
+
+      <Button href={APP.signup} variant="primary" data-magnetic class="hidden sm:inline-flex">
+        Get started
+      </Button>
+
+      <button
+        id="menu-open"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        class="grid size-9 place-items-center rounded-full text-ghost transition-colors hover:bg-card md:hidden"
+      >
+        <Icon name="menu" size={22} />
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- Mobile overlay -->
+<div
+  id="mobile-menu"
+  class="fixed inset-0 z-[60] hidden flex-col bg-void/95 backdrop-blur-xl md:!hidden"
+>
+  <div class="container-x flex h-16 items-center justify-between">
+    <Wordmark class="text-2xl" />
+    <button
+      id="menu-close"
+      type="button"
+      aria-label="Close menu"
+      class="grid size-9 place-items-center rounded-full text-ghost hover:bg-card"
+    >
+      <Icon name="x" size={22} />
+    </button>
+  </div>
+  <nav class="container-x mt-8 flex flex-col gap-2" aria-label="Mobile">
+    {
+      NAV_LINKS.map((link) => (
+        <a
+          href={link.href}
+          data-menu-link
+          class="border-b border-border py-4 font-display text-3xl font-bold tracking-tight text-ghost"
+        >
+          {link.label}
+        </a>
+      ))
+    }
+    <div class="mt-8 flex flex-col gap-3">
+      <Button href={APP.signup} variant="primary" size="lg">Get started — it’s free</Button>
+      <Button href={APP.login} variant="secondary" size="lg">Log in</Button>
+    </div>
+  </nav>
+</div>
+
+<script>
+  // --- Scroll state -------------------------------------------------
+  const nav = document.getElementById('site-nav');
+  const onScroll = () => {
+    if (!nav) return;
+    nav.dataset.scrolled = window.scrollY > 12 ? 'true' : 'false';
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // --- Theme toggle -------------------------------------------------
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('theme-toggle');
+  const darkIcon = document.querySelector<HTMLElement>('.theme-icon-dark');
+  const lightIcon = document.querySelector<HTMLElement>('.theme-icon-light');
+
+  const syncThemeIcon = () => {
+    const isLight = root.getAttribute('data-theme') === 'light';
+    darkIcon?.classList.toggle('hidden', isLight);
+    lightIcon?.classList.toggle('hidden', !isLight);
+  };
+  syncThemeIcon();
+
+  themeBtn?.addEventListener('click', () => {
+    const isLight = root.getAttribute('data-theme') === 'light';
+    if (isLight) {
+      root.removeAttribute('data-theme');
+      try { localStorage.setItem('theme', 'dark'); } catch {}
+    } else {
+      root.setAttribute('data-theme', 'light');
+      try { localStorage.setItem('theme', 'light'); } catch {}
+    }
+    syncThemeIcon();
+  });
+
+  // --- Mobile menu --------------------------------------------------
+  const menu = document.getElementById('mobile-menu');
+  const openBtn = document.getElementById('menu-open');
+  const closeBtn = document.getElementById('menu-close');
+
+  const setMenu = (open: boolean) => {
+    if (!menu) return;
+    menu.classList.toggle('hidden', !open);
+    menu.classList.toggle('flex', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    openBtn?.setAttribute('aria-expanded', String(open));
+  };
+
+  openBtn?.addEventListener('click', () => setMenu(true));
+  closeBtn?.addEventListener('click', () => setMenu(false));
+  document
+    .querySelectorAll('[data-menu-link]')
+    .forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') setMenu(false);
+  });
+</script>
