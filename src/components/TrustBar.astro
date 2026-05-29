@@ -1,0 +1,66 @@
+---
+import Icon from './Icon.astro';
+import { PLATFORMS } from '../consts';
+
+const signals = [
+  { icon: 'sparkles', title: 'Free to join', sub: '50 AI credits, no card' },
+  { icon: 'shield-check', title: 'Secure payments', sub: 'Held until work’s delivered' },
+  { icon: 'lock', title: 'Encrypted chat', sub: 'End-to-end, always private' },
+  { icon: 'badge-check', title: 'Verified analytics', sub: 'Real numbers, no screenshots' },
+] as const;
+---
+
+<section class="border-y border-border/60 py-12 md:py-16" aria-label="Platforms and trust">
+  <div class="container-x">
+    <p class="text-center text-sm font-medium text-muted">Built to work where you already do.</p>
+
+    <!-- Platform marquee -->
+    <div class="relative mt-6 overflow-hidden">
+      <div class="marquee-track">
+        {
+          PLATFORMS.map((p) => (
+            <span class="platform whitespace-nowrap font-display text-xl font-bold text-muted transition-colors hover:text-ghost">
+              {p}
+            </span>
+          ))
+        }
+        {
+          PLATFORMS.map((p) => (
+            <span
+              aria-hidden="true"
+              class="platform whitespace-nowrap font-display text-xl font-bold text-muted"
+            >
+              {p}
+            </span>
+          ))
+        }
+      </div>
+      <div class="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-void to-transparent"></div>
+      <div class="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-void to-transparent"></div>
+    </div>
+
+    <!-- Honesty strip — real signals, not inflated stats -->
+    <div class="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-4" data-stagger>
+      {
+        signals.map((s) => (
+          <div
+            class="flex items-center gap-3 rounded-2xl border border-border bg-surface p-4"
+            data-stagger-item
+          >
+            <span class="grid size-10 shrink-0 place-items-center rounded-xl bg-grad-main text-white">
+              <Icon name={s.icon} size={18} />
+            </span>
+            <div class="leading-tight">
+              <p class="font-semibold">{s.title}</p>
+              <p class="text-xs text-muted">{s.sub}</p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <p class="mt-7 text-center text-sm text-muted">
+      Built in India 🇮🇳, in the open. We’re new — and that’s the point.
+    </p>
+  </div>
+</section>
