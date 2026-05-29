@@ -1,0 +1,92 @@
+---
+import Wordmark from './Wordmark.astro';
+import { APP } from '../consts';
+
+const columns = [
+  {
+    title: 'Product',
+    links: [
+      { label: 'Features', href: '#features' },
+      { label: 'How it works', href: '#how' },
+      { label: 'AI assistant', href: '#ai' },
+      { label: 'For business', href: '#for-business' },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About', href: '#' },
+      { label: 'Blog', href: '#' },
+      { label: 'Careers', href: '#' },
+      { label: 'Contact', href: 'mailto:hello@creatorgig.in' },
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      { label: 'Privacy', href: '/privacy' },
+      { label: 'Terms', href: '/terms' },
+    ],
+  },
+] as const;
+
+const socials = ['Instagram', 'YouTube', 'X', 'LinkedIn'] as const;
+const year = 2026;
+---
+
+<footer class="border-t border-border">
+  <div class="container-x py-16">
+    <div class="grid gap-10 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
+      <div>
+        <Wordmark class="text-2xl" />
+        <p class="mt-4 max-w-xs text-sm text-muted">
+          Turn your following into your income.
+        </p>
+        <div class="mt-5 flex gap-2">
+          <a
+            href={APP.signup}
+            class="rounded-full bg-grad-main px-4 py-2 text-sm font-semibold text-white glow-pink"
+          >
+            Get started
+          </a>
+        </div>
+      </div>
+
+      {
+        columns.map((col) => (
+          <div>
+            <h3 class="text-sm font-semibold text-ghost">{col.title}</h3>
+            <ul class="mt-4 space-y-2.5">
+              {col.links.map((l) => (
+                <li>
+                  <a href={l.href} class="text-sm text-muted transition-colors hover:text-ghost">
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-6 sm:flex-row">
+      <p class="text-sm text-muted">© {year} creatorgig · Made in India 🇮🇳 — built for the world.</p>
+      <ul class="flex gap-5">
+        {
+          socials.map((s) => (
+            <li>
+              <a
+                href="#"
+                aria-label={`creatorgig on ${s}`}
+                class="text-sm text-muted transition-colors hover:text-ghost"
+              >
+                {s}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</footer>

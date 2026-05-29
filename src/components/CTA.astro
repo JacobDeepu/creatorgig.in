@@ -1,0 +1,48 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { APP } from '../consts';
+---
+
+<section class="section">
+  <div class="container-x">
+    <div class="relative overflow-hidden rounded-[2rem] border border-border bg-surface px-6 py-16 text-center sm:px-12 md:py-24">
+      <div class="mesh" aria-hidden="true" style="opacity:.6"></div>
+
+      <div class="relative mx-auto max-w-2xl">
+        <h2 data-kinetic class="kinetic text-[clamp(2.1rem,6vw,4rem)]">
+          <span class="kw"><span class="kwi">Your</span></span>
+          <span class="kw"><span class="kwi">following</span></span>
+          <span class="kw"><span class="kwi">is</span></span>
+          <span class="kw"><span class="kwi">already</span></span>
+          <span class="kw"><span class="kwi">worth</span></span>
+          <span class="kw"><span class="kwi">something.</span></span>
+          <span class="kw"><span class="kwi text-gradient">Let’s</span></span>
+          <span class="kw"><span class="kwi text-gradient">prove</span></span>
+          <span class="kw"><span class="kwi text-gradient">it.</span></span>
+        </h2>
+        <p class="mt-5 text-lg text-muted" data-reveal>
+          Turn your following into your income — starting today.
+        </p>
+        <div class="mt-8 flex flex-col items-center gap-4" data-reveal>
+          <Button href={APP.signup} variant="primary" size="lg" data-magnetic>
+            Get started — it’s free
+            <Icon name="arrow-right" size={18} />
+          </Button>
+          <p class="inline-flex items-center gap-1.5 text-sm text-muted">
+            <Icon name="sparkles" size={15} class="text-hotpink" /> 50 free AI credits when you join
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .kw { display: inline-block; overflow: hidden; vertical-align: top; line-height: 0.95; }
+  .kwi { display: inline-block; }
+  html.js .kwi { transform: translateY(110%); }
+  @media (prefers-reduced-motion: reduce) {
+    html.js .kwi { transform: none; }
+  }
+</style>
