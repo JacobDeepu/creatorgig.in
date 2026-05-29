@@ -1,0 +1,44 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'secondary' | 'ghost';
+  size?: 'md' | 'lg';
+  class?: string;
+  id?: string;
+  target?: string;
+  rel?: string;
+  'aria-label'?: string;
+  'data-magnetic'?: boolean | string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const base =
+  'group inline-flex items-center justify-center gap-2 rounded-full font-sans font-semibold whitespace-nowrap transition-transform duration-200 will-change-transform active:scale-[0.97]';
+
+const sizes = {
+  md: 'px-5 py-2.5 text-sm',
+  lg: 'px-7 py-3.5 text-base',
+};
+
+const variants = {
+  // gradient fill + white text + glow (never gradient text on gradient bg)
+  primary: 'bg-grad-main text-white glow-pink hover:scale-[1.03]',
+  secondary:
+    'bg-card text-ghost border border-border hover:border-muted hover:scale-[1.02]',
+  ghost: 'text-muted hover:text-ghost',
+};
+
+const cls = `${base} ${sizes[size]} ${variants[variant]} ${className}`;
+const Tag = href ? 'a' : 'button';
+---
+
+<Tag class={cls} href={href} {...rest}>
+  <slot />
+</Tag>

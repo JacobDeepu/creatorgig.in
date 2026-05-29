@@ -1,0 +1,62 @@
+---
+import { SITE } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  path = '',
+} = Astro.props;
+
+const canonical = new URL(path, SITE.url).href;
+const ogImage = new URL(SITE.ogImage, SITE.url).href;
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'creatorgig',
+  url: SITE.url,
+  description: 'India’s creator marketplace connecting influencers and businesses',
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${SITE.url}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<meta name="keywords" content={SITE.keywords} />
+<link rel="canonical" href={canonical} />
+
+<!-- Open Graph -->
+<meta property="og:site_name" content="creatorgig" />
+<meta property="og:title" content="creatorgig — Where Creators Get Paid" />
+<meta
+  property="og:description"
+  content="India’s creator marketplace. Connect influencers with brands. Free to join."
+/>
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content={SITE.locale} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="creatorgig — Where Creators Get Paid" />
+<meta
+  name="twitter:description"
+  content="India’s creator marketplace for influencers and brands."
+/>
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Structured data -->
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} is:inline />

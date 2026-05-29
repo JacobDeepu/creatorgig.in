@@ -1,0 +1,15 @@
+---
+// The wordmark is ALWAYS "creatorgig": all lowercase, no space.
+// "creator" = base text color, "gig" = signature gradient.
+interface Props {
+  class?: string;
+}
+const { class: className = '' } = Astro.props;
+---
+
+<span
+  class={`font-display font-extrabold lowercase leading-none ${className}`}
+  style="letter-spacing:-1.5px"
+>
+  <span>creator</span><span class="text-gradient">gig</span>
+</span>
